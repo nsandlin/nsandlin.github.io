@@ -1,0 +1,155 @@
+<html>
+  <head>
+    <style>
+body {
+  font-family: Calibri,sans-serif;
+  background-color: #eeeedd;
+}
+.a {
+  margin: 3%;
+  border: solid 1px #c3c388;
+
+}
+.a, .a * {
+  background-color: #fff;
+}
+.b {
+  border-top: solid 1px #c3c388;
+}
+.c {
+  width: 100%;
+}
+h1 {
+  text-align: center;
+  background-color: #fff;
+}
+h3 {
+  text-align: left;
+  padding: .8em 0 0 .8em; margin: 0;
+}
+p {
+  text-align: left;
+  padding-left: 1em;
+}
+/* Flexbox */
+.flex-container, .row {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: #fff;
+}
+.container-main, #bottomnav {
+  text-align: center;
+  margin: auto;
+}
+.flex-box {
+  margin: auto;
+}
+</style>
+    
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      
+      // Load the Visualization API and the piechart package.
+      google.load('visualization', '1.0', {'packages':['corechart']});
+      
+      google.setOnLoadCallback(drawCharts);
+      
+      function drawCharts () {
+          drawChart1();
+          drawChart3();
+      }
+      
+      // Callback that creates and populates a data table,
+      // instantiates the chart, passes in the data and
+      // draws it.
+      function drawChart1() {
+        // Create the data table.
+        var data1 = new google.visualization.DataTable();
+        data1.addColumn('string', 'Topping');
+        data1.addColumn('number', 'Slices');
+        data1.addRows([
+          ['Worked full time all year', 401.7],
+          ['Worked less than that', 392.2],
+          ['Did not work', 325.2],
+        ]);
+        // Set chart options
+        var options1 = {
+          colors: ['#0000ff', '#4d4dff', '#666633']
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart1 = new google.visualization.PieChart(document.getElementById('chart1'));
+        chart1.draw(data1, options1);
+      }
+      
+      
+      // Callback that creates and populates a data table,
+      // instantiates the chart, passes in the data and
+      // draws it.
+      function drawChart3() {
+        // Create the data table.
+      var data3 = google.visualization.arrayToDataTable([
+        ['Insurance status', 'Insured', 'Uninsured', { role: 'annotation' } ],
+        ['Full time', 3719.9, 401.7, ''],
+        ['Less', 1802.2, 392.2, ''],
+        ['Did not work', 1357.1,325.2, '']
+      ]);
+
+      var options3 = {
+        colors: ['#88ff4d', '#ffcc99'],
+        legend: { position: 'top', maxLines: 2 },
+        bar: { groupWidth: '75%' },
+        isStacked: true
+        };
+        // Instantiate and draw our chart, passing in some options.
+        var chart3 = new google.visualization.BarChart(document.getElementById('chart3'));
+        chart3.draw(data3, options3);
+      }
+      
+    </script>
+  </head>
+
+<body>
+  <div class="a">
+  <h1>Are the Uninsured Deadbeats?</h1>
+  <div class="container-main flex-container">
+    <div class="b c">
+      <h3>More than a quarter of the 8 million Illinois residents ages 19-64 lack health insurance</h3>
+      <p>
+        The uninsured account for 10% of those working full-time year-round, and 18% of those working less than that.
+      </p>
+    </div>
+    </div><!--row-->
+    <div class="row">
+    <div class="flex-box">
+    <div id="chart3"></div>
+    </div>
+    <div class="flex-box">
+    <div id="chart4"></div>
+    </div>
+    </div><!--row-->
+   
+    <div class="b c">
+      <h3>Of the 1.1 million Illinois working-age residents without health insurance, more than 70% worked in 2014</h3>
+      <p>
+      About 36% of those 1.1 million worked full-time year-round, and almost as many worked less than than that.
+      </p>
+    </div>
+    <div class="row">
+    <div class="flex-box">
+    <div id="chart1"></div>
+    </div>
+    <div class="flex-box">
+    <div id="chart2"></div>
+    </div>
+    </div><!--row-->
+    <div class="b c">
+      <p style="font-size: 80%;">
+      <b>Data:</b> Table B27012: HEALTH INSURANCE COVERAGE STATUS AND TYPE BY WORK EXPERIENCE BY SEX BY AGE. 2014 American Community Survey 1-year estimates of the civilian noninstitutionalized population 18 years and over (in 1,000s). 
+      &nbsp; <a href="http://factfinder.census.gov/bkmk/table/1.0/en/ACS/14_1YR/B27012/0400000US17|0400000US17.05000" target="_blank">View data</a> &nbsp; <a href="UninsuredWorkers-IL-Cook.html" target="_blank">IL vs. Cook County</a>
+      </p>
+    </div>
+    </div><!--a-->
+  </body>
+</html>
+
